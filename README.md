@@ -1,4 +1,4 @@
-# zsh-ollama-command
+# zsh-ai-cli
 
 An [`oh-my-zsh`](https://ohmyz.sh) plugin that integrates the OLLAMA AI model 
 with [fzf](https://github.com/junegunn/fzf) to provide intelligent command 
