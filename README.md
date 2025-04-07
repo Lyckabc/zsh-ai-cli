@@ -20,23 +20,28 @@ suggestions based on user input requirements.
 * `curl` for making API requests
 * `OLLAMA` server running
 
-## Configuration Variables
+## Configuration Variables 
 
 | Variable Name                | Default Value            | Description                                    |
 |------------------------------|--------------------------|------------------------------------------------|
-| `ZSH_OLLAMA_MODEL`           | `llama3`                 | OLLAMA model to use (e.g., `llama3`)           |
-| `ZSH_OLLAMA_COMMANDS_HOTKEY` | `Ctrl-o`                 | Default shortcut key for triggering the plugin |
-| `ZSH_OLLAMA_COMMANDS`        | 5                        | Number of command suggestions displayed        |
-| `ZSH_OLLAMA_URL`             | `http://localhost:11434` | The URL of OLLAMA server host                  |
+| `ZSH_AI_CLI_MODEL`           | `llama3`                 | OLLAMA model to use (e.g., `llama3`)           |
+| `ZSH_AI_CLI_HOTKEY`          | `Ctrl-o`                 | Default shortcut key for triggering the plugin |
+| `ZSH_AI_CLI_COMMANDS`        | 5                        | Number of command suggestions displayed        |
+| `ZZSH_AI_CLI_URL`            | `http://localhost:11434` | The URL of OLLAMA server host                  |
 
 ## Usage
 
 1. Clone the repository to `oh-my-zsh` custom plugin folder
     ```bash
     git clone https://github.com/plutowang/zsh-ai-cli.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-ai-cli
+    
     ```
 
-2. Enable the plugin in ~/.zshrc:
+2. add plugin to .zshrc file 
+  ```bash
+  echo 'plugins+=(zsh-ai-cli)' >> ~/.zshrc
+  ```
+ or Enable the plugin in ~/.zshrc:
     ```bash
     plugins=(
       [plugins...]
@@ -45,8 +50,8 @@ suggestions based on user input requirements.
     ```
 3. set OLLAMA_HOST (default - OLLAMA_HOST:-http://localhost:11434)
 ```bash
-# export  OLLAMA_HOST
-export OLLAMA_HOST=http://192.168.0.12:11434
+# if use remote server  ex; export OLLAMA_HOST=http://192.168.0.55:11434
+export OLLAMA_HOST=http://your-server:11434 
 source ~/.zshrc
 
 ```
