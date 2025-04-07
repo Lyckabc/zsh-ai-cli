@@ -33,7 +33,7 @@ suggestions based on user input requirements.
 
 1. Clone the repository to `oh-my-zsh` custom plugin folder
     ```bash
-    git clone https://github.com/plutowang/zsh-ollama-command.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-ollama-command
+    git clone https://github.com/Lyckabc/zsh-ai-cli.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-ai-cli
     ```
 
 2. Enable the plugin in ~/.zshrc:
