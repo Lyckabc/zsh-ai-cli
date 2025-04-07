@@ -1,4 +1,4 @@
-# zsh-ollama-command
+# zsh-ai-cli
 
 An [`oh-my-zsh`](https://ohmyz.sh) plugin that integrates the OLLAMA AI model 
 with [fzf](https://github.com/junegunn/fzf) to provide intelligent command 
@@ -33,14 +33,14 @@ suggestions based on user input requirements.
 
 1. Clone the repository to `oh-my-zsh` custom plugin folder
     ```bash
-    git clone https://github.com/plutowang/zsh-ollama-command.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-ollama-command
+    git clone https://github.com/plutowang/zsh-ai-cli.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-ai-cli
     ```
 
 2. Enable the plugin in ~/.zshrc:
     ```bash
     plugins=(
       [plugins...]
-      zsh-ollama-command
+      zsh-ai-cli
     )
     ```
 3. Input what you want to do then trigger the plugin. Press the custom shortcut (default is Ctrl-o) to start
