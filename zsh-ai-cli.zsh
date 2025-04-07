@@ -4,8 +4,8 @@
 (( ! ${+ZSH_AI_CLI_MODEL} )) && typeset -g ZSH_AI_CLI_MODEL='llama3'
 # default response number as 5
 (( ! ${+ZSH_AI_CLI_COMMANDS} )) && typeset -g ZSH_AI_CLI_COMMANDS='5'
-# default ollama server host
-(( ! ${+ZSH_AI_CLI_URL} )) && typeset -g ZSH_AI_CLI_URL='http://localhost:11434'
+# default ollama server host - support OLLAMA_HOST env var
+typeset -g ZSH_AI_CLI_URL="${OLLAMA_HOST:-http://localhost:11434}"
 
 validate_required() {
   # check required tools are installed
@@ -24,14 +24,17 @@ validate_required() {
       echo "Please install it with 'brew install curl'"
       return 1;
   fi
-  if ! (( $(pgrep -f ollama | wc -l ) > 0 )); then
-    echo "🚨: zsh-ai-cli failed as OLLAMA server NOT running!"
-    echo "Please start it with 'brew services start ollama'"
+  
+  # Check if Ollama server is accessible
+  if ! curl -s "${ZSH_AI_CLI_URL}/api/tags" > /dev/null; then
+    echo "🚨: zsh-ai-cli failed as Ollama server at ${ZSH_AI_CLI_URL} is not accessible!"
     return 1;
   fi
-  if ! curl -s "${ZSH_OLLAMA_URL}/api/tags" | grep -q $ZSH_OLLAMA_MODEL; then
-    echo "🚨: zsh-ai-cli failed as model ${ZSH_OLLAMA_MODEL} server NOT found!"
-    echo "Please start it with 'ollama pull ${ZSH_OLLAMA_MODEL}' or adjust ZSH_OLLAMA_MODEL"
+  
+  # Check if model exists
+  if ! curl -s "${ZSH_AI_CLI_URL}/api/tags" | grep -q $ZSH_AI_CLI_MODEL; then
+    echo "🚨: zsh-ai-cli failed as model ${ZSH_AI_CLI_MODEL} not found on server!"
+    echo "Please pull it with 'ollama pull ${ZSH_AI_CLI_MODEL}' or adjust ZSH_AI_CLI_MODEL"
     return 1;
   fi
 }

@@ -43,9 +43,16 @@ suggestions based on user input requirements.
       zsh-ai-cli
     )
     ```
-3. Input what you want to do then trigger the plugin. Press the custom shortcut (default is Ctrl-o) to start
+3. set OLLAMA_HOST (default - OLLAMA_HOST:-http://localhost:11434)
+```bash
+# export  OLLAMA_HOST
+export OLLAMA_HOST=http://192.168.0.12:11434
+source ~/.zshrc
+
+```
+4. Input what you want to do then trigger the plugin. Press the custom shortcut (default is Ctrl-o) to start
    the command suggestion process.
-4. Interact with FZF: Type a query or input requirement, and FZF will display
+5. Interact with FZF: Type a query or input requirement, and FZF will display
    suggested MacOS terminal commands. Select one to execute.
 
 **Get Started**
